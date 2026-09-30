@@ -1,15 +1,20 @@
 ﻿namespace CodingTrackerTests;
+using CodingTracker;
 
 public class Tests
 {
+    private AppSettings validAppSettings;
+    
     [SetUp]
     public void Setup()
     {
+        validAppSettings = AppSettings.LoadConfig();
     }
 
     [Test]
     public void Test1()
     {
-        Assert.Pass();
+        string expectedDbPath = "CodingTracker.db";
+        Assert.Equals(validAppSettings.DbPath, expectedDbPath);
     }
 }
